@@ -9,6 +9,6 @@
 # Functionalities
 --> Python asynchronous autocompletion
 
---> Compile and run small c++ files using <F5>
+--> Compile and run small c++ files using F5
 
 --> Use codeforces from VIM 
