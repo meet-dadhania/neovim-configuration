@@ -4,8 +4,8 @@ set nocompatible
 filetype off  
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'deoplete-plugins/deoplete-jedi'
+Plugin 'Shougo/deoplete.nvim'  " python completion only for neovim, VIM users DELETE THIS !!
+Plugin 'deoplete-plugins/deoplete-jedi' " python completion only for neovim, VIM users DELETE THIS !!
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
@@ -32,13 +32,15 @@ call vundle#end()
 filetype plugin indent on
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Bindings <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-nnoremap <F6> :SLoad cp<CR>
-nnoremap <F7> :SClose <CR>
-nnoremap <ESC> <C-\><C-n> <CR>
 autocmd filetype cpp nnoremap <F5> :w <bar> silent !g++ -ulimit -Wall -Wno-unused-result -std=c++11   -O2   % -o %:r && %:r<CR>
+nnoremap <F8> :SSave cp<CR> " Save a session to capture the position of windows and buffers
+nnoremap <F6> :SLoad cp<CR> " Just load it using hotkey when you open vim
+nnoremap <F7> :SClose <CR> " Close after you complete coding
+nnoremap <ESC> <C-\><C-n> <CR> 
 map <F2> :NERDTreeToggle <CR>
 inoremap <expr> <Tab>  deoplete#mappings#manual_complete()
 let mapleader = ";"
+cnoremap jk <ESC>
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Ultisnips <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -47,13 +49,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Airline <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1 " Use powerline_font symbols
 let g:airline_theme = 'solarized'
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Remap ESC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 let g:easyescape_chars = { "j": 1, "k": 1 }
 let g:easyescape_timeout = 100
-cnoremap jk <ESC>
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Hard Mode <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 let g:hardtime_default_on = 1
@@ -61,26 +62,26 @@ let g:list_of_disabled_keys= ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:hardtime_maxcount = 100
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Deopelete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-let g:deoplete#sources#jedi#python_path = 'C:\Users\meetd\AppData\Local\Programs\Python\Python37\python.exe'
-let g:python3_host_prog = 'C:\Users\meetd\AppData\Local\Programs\Python\Python37\python.exe'
+let g:deoplete#sources#jedi#python_path = 'path_to_python.exe'
+let g:python3_host_prog = 'path_to_python.exe'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 1
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Codeforces <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-let g:CodeForcesUsername = '16bce103@nirmauni.ac.in'
-let g:CodeForcesPassword = 'Dharvidadhania15'
-let g:CodeForcesContestId = 518
-let g:CodeForcesTemplate = '/mnt/c/cp/template.cpp'
+let g:CodeForcesUsername = 'Enter_your_username'
+let g:CodeForcesPassword = 'Enter_your_password'
+let g:CodeForcesContestId = 518 " Contest ID
+let g:CodeForcesTemplate = 'path_to_your_coding_template'
 let g:CodeForcesInput = 'sampleInput'
 let g:CodeForcesOutput = 'sampleOutput'
 let g:CodeForcesUserOutput = 'myCorrectOutput'
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MISC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-set background=dark
-colorscheme solarized8
-syntax on
-set mouse=a
-set autoread
+set background=dark " Solarized color theme
+colorscheme solarized8 " Solarized color theme
+syntax on " Syntax highlighting
+set mouse=a " copy paste using mouse
+set autoread " auto reload file when they change in memory
 set encoding=utf-8
 set nu
 set tabstop=4
